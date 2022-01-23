@@ -1,0 +1,315 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	flex-direction: column;
+}
+.upper {
+	width: 100vw;
+	height: 50vh;
+	background: #ffd300;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* styling the lives count and image */
+.lives {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	display: flex;
+	align-items: flex-end;
+}
+.lives img {
+	width: 8%;
+}
+.lives-count {
+	font-size: 2rem;
+	color: rgba(0, 0, 0, 0.597);
+}
+
+/* styling the category button */
+.category-btn {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	display: flex;
+	align-items: flex-end;
+}
+.category-btn button {
+	width: 150px;
+	height: 5vh;
+	border: none;
+	cursor: pointer;
+	background: rgb(255, 102, 0);
+	border-radius: 9px;
+	font-size: 1.2rem;
+	color: #ffd300;
+	font-weight: bold;
+}
+
+.word {
+	font-size: 2.5rem;
+	display: flex;
+	text-align: center;
+}
+.removed {
+	opacity: 0.2;
+}
+.underline {
+	width: 45px;
+	height: 7px;
+	margin: 5px;
+	background: black;
+}
+
+.lower {
+	position: relative;
+	width: 100vw;
+	height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.keys-container {
+	width: 65%;
+	height: 50%;
+	display: grid;
+	border: 1px solid rgba(0, 0, 0, 0.432);
+	padding: 10px;
+	border-radius: 5px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 1px;
+}
+.x {
+	grid-column: 3/4;
+}
+.key {
+	font-size: 1rem;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	background: rgba(128, 128, 128, 0.419);
+	cursor: pointer;
+}
+button:active {
+	filter: brightness(60%);
+}
+
+/* styling for the new word page, whenever user either guesses the word right or failed to guess it */
+.result-pg {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: white;
+	z-index: 1;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 3rem;
+	font-family: Arial, Helvetica, sans-serif;
+	display: none;
+}
+.new-word-btn {
+	margin-top: 30px;
+	width: 30vw;
+	height: 10vh;
+	border: none;
+	cursor: pointer;
+	background: #ffd300;
+	border-radius: 9px;
+	font-size: 2rem;
+	color: rgb(255, 102, 0);
+	font-weight: bold;
+}
+
+/* styling for reseting the app and removing all the word that were gussed by the player from the local storage */
+.reset-pg {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: white;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 3rem;
+	font-family: Arial, Helvetica, sans-serif;
+	display: none;
+}
+.reset-btn {
+	margin-top: 30px;
+	width: 30vw;
+	height: 10vh;
+	border: none;
+	cursor: pointer;
+	background: #ffd300;
+	border-radius: 9px;
+	font-size: 2rem;
+	color: rgb(255, 102, 0);
+	font-weight: bold;
+}
+
+/* styling for the categories page */
+.categories-pg {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.3rem;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	display: none;
+}
+.categories-pg h1 {
+	margin-bottom: 100px;
+}
+.option {
+	margin-top: 30px;
+	width: 30vw;
+	height: 10vh;
+	border: 4px solid green;
+	cursor: pointer;
+	background: #ffd300;
+	border-radius: 9px;
+	font-size: 2rem;
+	color: rgb(255, 102, 0);
+	font-weight: bold;
+}
+.option:focus {
+	margin-top: 30px;
+	width: 30vw;
+	height: 10vh;
+	border: 4px solid green;
+	cursor: pointer;
+	background: green;
+	border-radius: 9px;
+	font-size: 2rem;
+	color: white;
+	font-weight: bold;
+}
+
+.selected {
+	margin-top: 30px;
+	width: 30vw;
+	height: 10vh;
+	border: 4px solid green;
+	cursor: pointer;
+	background: green;
+	border-radius: 9px;
+	font-size: 2rem;
+	color: white;
+	font-weight: bold;
+}
+
+/* for tablets */
+@media only screen and (max-width: 868px) {
+	.keys-container {
+		width: 650px;
+	}
+	.lives img {
+		width: 10%;
+	}
+}
+
+/* for phones */
+@media only screen and (max-width: 412px) {
+	.category-btn {
+		right: 15px;
+	}
+	.category-btn button {
+		width: 100px;
+		font-size: 1rem;
+	}
+
+	.lives {
+		left: 10px;
+	}
+	.lives img {
+		width: 17%;
+	}
+	.lives-count {
+		font-size: 1.5rem;
+	}
+
+	.word {
+		font-size: 1.6rem;
+	}
+	.underline {
+		width: 22px;
+		margin: 4px;
+	}
+
+	.keys-container {
+		width: 380px;
+		height: 230px;
+	}
+
+	/* styling for the result page */
+	.result-pg {
+		font-size: 2rem;
+	}
+	.new-word-btn {
+		width: 50vw;
+		height: 8vh;
+		font-size: 1.7rem;
+	}
+
+	/* styling for the categories page */
+	.categories-pg h1 {
+		font-size: 2.5rem;
+	}
+	.option {
+		margin-top: 15px;
+		width: 60vw;
+		height: 10vh;
+		font-size: 1.7rem;
+	}
+	.option:focus {
+		margin-top: 15px;
+		width: 60vw;
+		height: 10vh;
+		font-size: 1.7rem;
+	}
+
+	.selected {
+		margin-top: 15px;
+		width: 60vw;
+		height: 10vh;
+		font-size: 1.7rem;
+	}
+}
+
+/* for very narrow screens */
+@media only screen and (max-width: 320px) {
+	.category-btn button {
+		width: 80px;
+		font-size: 0.8rem;
+	}
+	.lives-count {
+		font-size: 1.3rem;
+	}
+
+	.word {
+		font-size: 1.5rem;
+	}
+
+	.keys-container {
+		height: 190px;
+	}
+}
