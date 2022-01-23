@@ -58,7 +58,7 @@ body {
 	text-align: center;
 }
 .removed {
-	opacity: 0.2;
+	opacity: 0;
 }
 .underline {
 	width: 45px;
