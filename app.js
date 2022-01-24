@@ -68,21 +68,31 @@ if (!randomWordGenerator(words())) {
 	});
 } else {
 	var wordArray = randomWordGenerator(words());
-	for (let letter of wordArray) {
-		word.innerHTML += `
-		<div class='letters-container'>
-		<h1 class='letter removed'>${letter}</h1>
-		<div class='underline'></div>
-		</div>
-		`;
+	for (let i = 0; i < wordArray.length; i++) {
+		if (i === 0 || i === 5 || i === 9) {
+			word.innerHTML += `
+			<div class='letters-container'>
+			<h1 class='letter '>${wordArray[i]}</h1>
+			<div class='underline'></div>
+			</div>`;
+		} else {
+			word.innerHTML += `
+			<div class='letters-container'>
+			<h1 class='letter removed'>${wordArray[i]}</h1>
+			<div class='underline'></div>
+			</div>`;
+		}
 	}
 }
-let livesCount = wordArray.length * 3;
+let livesCount = Math.floor(wordArray.length * 1.5);
 
 const letters = document.querySelectorAll(".letter");
 const uniqueLetters = [];
 for (let letter of letters) {
-	if (!uniqueLetters.includes(letter.textContent)) {
+	if (
+		!uniqueLetters.includes(letter.textContent) &&
+		letter.classList.contains("removed")
+	) {
 		uniqueLetters.push(letter.textContent);
 	}
 }
@@ -127,7 +137,10 @@ for (let key of keys) {
 		} else {
 			livesCount -= 1;
 			if (livesCount <= 0) {
-				resultStatement.textContent = "YOU LOSE !!!!";
+				resultStatement.innerHTML = `<span>Sorry You Loose :(</span>
+					</br>
+					<span class='right-word'>The right word was "${wordArray.join("")}"
+					`;
 				resultStatement.style.color = "red";
 				result.style.display = "flex";
 				reloadButton.textContent = "TRY AGAIN";
